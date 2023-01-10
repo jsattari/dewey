@@ -1,0 +1,14 @@
+{
+    "name": "Dewey: Bookmark searcher",
+    "version": "1.0.0",
+    "description": "Search your bookmarks with ease!",
+    "manifest_version": 3,
+    "author": "jsattari",
+    "permissions": [
+        "bookmarks"
+    ],
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Dewey"
+    }
+}

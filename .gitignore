@@ -1,2 +1,4 @@
 venv/
 *.yaml
+node_modules/
+.eslintrc.json
