@@ -1,14 +1,22 @@
 /* eslint-disable require-jsdoc */
 
-// array to hold bookmarks and urls
-const allBookmarks = {};
-
 /* load all bookmarks on open */
 document.addEventListener('DOMContentLoaded', function() {
+  /*
+      Loop through nodes of bookmarks data structure. If
+      node does not contain undefined/null values for urls,
+      then create a row of data for the title/url. Else,
+      traverse from parent to child node.
+    */
   function getBookmarks(parentNode) {
     parentNode.forEach(function(bookmark) {
+      // get element of div that will hold potential list
+      const bmList = document.getElementById('div-1');
       if (! (bookmark.url === undefined || bookmark.url === null)) {
-        allBookmarks[bookmark.title] = bookmark.url;
+        const tr = document.createElement('tr');
+        // eslint-disable-next-line max-len
+        tr.innerHTML = '<a href="' + bookmark.url + '" target="blank" rel="noreferrer noopener">' + bookmark.title + '</a>';
+        bmList.appendChild(tr);
       }
       if (bookmark.children) {
         getBookmarks(bookmark.children);
@@ -20,31 +28,30 @@ document.addEventListener('DOMContentLoaded', function() {
   chrome.bookmarks.getTree(function(rootNode) {
     getBookmarks(rootNode);
   });
-
-  const bmList = document.getElementById('bmList');
-
-  for (const key in allBookmarks) {
-    if (! (key === undefined || key === null)) {
-      const li = document.createElement('li');
-      li.innerHTML = '<a href="' + allBookmarks[key] + '">' + key + '</a>';
-      bmList.appendChild(li);
-    }
-  }
 });
 
-document.addEventListener('keydown', function() {
-  const input = document.getElementById('searchInput').value;
-  const bmList = document.getElementById('bmList');
+// get element of search input
+const inputBox = document.getElementById('searchInput');
 
-  function filterBookmarks() {
-    for (const key in allBookmarks) {
-      if (key.indexOf(input) > -1) {
-        const li = document.createElement('li');
-        li.innerHTML = '<a href="' + allBookmarks[key] + '">' + key + '</a>';
-        bmList.appendChild(li);
-      }
-    };
+/*
+  Listen for change in input element. Get text input, element of
+  table that holds bookmarks, and individual rows.
+  Hide anything that is not related to the input
+*/
+inputBox.addEventListener('input', (event) => {
+  event.preventDefault();
+  const textInput = event.target.value;
+  const bmList = document.getElementById('div-1');
+  const bmRows = bmList.getElementsByTagName('tr');
+  for (i = 0; i < bmRows.length; i++) {
+    link = bmRows[i].getElementsByTagName('a')[0];
+    textValue = link.textContent || link.innerText;
+    if (textValue.toUpperCase().indexOf(textInput.toUpperCase()) > -1) {
+      // don't hide
+      bmRows[i].style.display = '';
+    } else {
+      // hide
+      bmRows[i].style.display = 'none';
+    }
   }
-
-  filterBookmarks();
 });
