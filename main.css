@@ -1,0 +1,57 @@
+body {
+    font: 12px 'PT Sans', serif;
+    background: #eee9de;
+    width: 300px;
+    margin: 5px;
+    overflow: overlay;
+}
+
+#body-div {
+    width: 95%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(90, 90, 90);
+}
+
+::-webkit-scrollbar-track {
+    background:  #eee9de;
+}
+
+h1 {
+    width: 100%;
+    font: 16px;
+    color: #ca6924;
+    background-color: #e6e0d4;
+    text-align: center;
+    margin: 0px;
+    margin-left: 2px;
+}
+
+input {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+input[type=text], textarea {
+    border:             1px solid #DDDDDD;
+    margin:             5px 1px 3px 0px;
+    outline:            none;
+    padding:            3px 0px 3px 3px;
+    -webkit-transition: all 0.30s ease-in-out;
+       -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+         -o-transition: all 0.30s ease-in-out;
+  }
+
+  input[type=text]:focus, textarea:focus {
+    border:             1px solid #00a1ad;
+    box-shadow:         0 0 10px #00a1ad;
+    margin:             5px 1px 3px 0px;
+    padding:            3px 0px 3px 3px;
+  }
