@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
   function getBookmarks(parentNode) {
     parentNode.forEach(function(bookmark) {
       // get element of div that will hold potential list
-      const bmList = document.getElementById('div-1');
+      const bmList = document.getElementById('div-list');
       if (! (bookmark.url === undefined || bookmark.url === null)) {
         const tr = document.createElement('tr');
         // eslint-disable-next-line max-len
-        tr.innerHTML = '<a href="' + bookmark.url + '" target="blank" rel="noreferrer noopener">' + bookmark.title + '</a>';
+        tr.innerHTML = '<td><a href="' + bookmark.url + '" target="blank" rel="noreferrer noopener">' + bookmark.title + '</a></td>';
         bmList.appendChild(tr);
       }
       if (bookmark.children) {
@@ -41,7 +41,7 @@ const inputBox = document.getElementById('searchInput');
 inputBox.addEventListener('input', (event) => {
   event.preventDefault();
   const textInput = event.target.value;
-  const bmList = document.getElementById('div-1');
+  const bmList = document.getElementById('div-list');
   const bmRows = bmList.getElementsByTagName('tr');
   for (i = 0; i < bmRows.length; i++) {
     link = bmRows[i].getElementsByTagName('a')[0];
