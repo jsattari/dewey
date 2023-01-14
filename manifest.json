@@ -4,6 +4,10 @@
     "description": "Search your bookmarks with ease!",
     "manifest_version": 3,
     "author": "jsattari",
+    "icons": {
+        "16": "icon_sm.png",
+        "48": "icon_lrg.png"
+    },
     "permissions": [
         "bookmarks"
     ],
