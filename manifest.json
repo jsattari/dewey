@@ -11,9 +11,5 @@
         "default_icon": "icon_lrg.png",
         "default_popup": "index.html",
         "default_title": "Dewey"
-    },
-    "background.service_worker": {
-        "scripts": ["app.js"],
-        "persistent": false
     }
 }
