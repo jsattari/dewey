@@ -25,7 +25,7 @@ body {
     width: 100%;
     font-size: 16px;
     margin: auto;
-    border-spacing: 3px;
+    border-spacing: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -47,7 +47,7 @@ body {
     margin-bottom: 5px;
 }
 
-input[type=text], textarea {
+input[type=text], textarea { /* transition for search bar */
     background: #ffffff;
     width: 100%;
     height: 20px;
@@ -58,7 +58,7 @@ input[type=text], textarea {
 }
 
 input[type=text]:focus, textarea:focus {
-    background: #bcceb6;
+    background: #aaf0d1;
     color: #1f4740;
     width: 100%;
     height: 20px;
@@ -68,14 +68,10 @@ tr {
     width: 100%;
     margin: 0px;
     border-spacing: 5px;
-}
-
-tr:nth-child(even) {
-    background: #faf0e6;
-}
-
-tr:nth-child(odd) {
-    background: #eac096;
+    box-shadow: 0 4px 8px 0 black; /* this adds the "card" effect */
+    padding: 16px;
+    text-align: left;
+    background: #dbccd3;
 }
 
 td {
@@ -87,14 +83,24 @@ td {
 }
 
 td:hover {
-    background: #914e75;
-    color: white;
+    background: #aaf0d1;
+}
+
+td a {
+    margin: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 a:link {
-    color: #d2814e;
+    color: #005488;
 }
 
 a:visited {
-    color: #d2814e;
+    color: #005488;
+}
+
+a:hover {
+    color: #ff6fff;
 }
